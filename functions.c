@@ -26,7 +26,6 @@ struct Pokemon pickStruct() {
   strcpy(p3.type2, "Flying"); //not a dragon somehow
 
   //Randomly pick one of those structs
-  srand(time(0));
   int randInt = rand() % 3; //index 0 to 2
 
   if (randInt == 0)
@@ -38,9 +37,16 @@ struct Pokemon pickStruct() {
   return p3;
 }
 
-void printStruct(struct Pokemon pokemon) {
-  printf("Name: %s \n", pokemon.name);
-  printf("Dex number: %d \n", pokemon.dexNum);
-  printf("Type 1: %s \n", pokemon.type1);
-  printf("Type 2: %s \n", pokemon.type2);
+void printStruct(struct Pokemon * pokemon) {
+  printf("Name: %s \n", pokemon -> name);
+  printf("Dex number: %d \n", pokemon -> dexNum);
+  printf("Type 1: %s \n", pokemon -> type1);
+  printf("Type 2: %s \n", pokemon -> type2);
+}
+
+void modifyStruct(struct Pokemon * pokemon, char name[15], int dexNum, char type1[10], char type2[10]) {
+  strcpy(pokemon -> name, name);
+  pokemon -> dexNum = dexNum;
+  strcpy(pokemon -> type1, type1);
+  strcpy(pokemon -> type2, type2);
 }
